@@ -5,25 +5,25 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CommentResource;
 use App\Http\Resources\PostResource;
-use App\Models\Comment;
-use App\Models\Post;
-use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
-    //
-
     /**
      * @OA\Get(
      *     path="/api/v1/users/{id}/posts",
      *     summary="Get user's posts",
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="Success")
+     *     @OA\Response(
+     *         response=200,
+     *         description="Success",
+     *         @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/PostResource"))
+     *     )
      * )
      */
-    public function posts($id)
+    public function posts(User $user)
     {
-        $posts = Post::where('user_id', $id)->with('user')->get();
+        $posts = $user->posts()->with('user')->get();
         return PostResource::collection($posts);
     }
 
@@ -32,13 +32,16 @@ class UserController extends Controller
      *     path="/api/v1/users/{id}/comments",
      *     summary="Get user's comments",
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="Success")
+     *     @OA\Response(
+     *         response=200,
+     *         description="Success",
+     *         @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/CommentResource"))
+     *     )
      * )
      */
-    public function comments($id)
+    public function comments(User $user)
     {
-        $comments = Comment::where('user_id', $id)->with('post')->get();
+        $comments = $user->comments()->with('post')->get();
         return CommentResource::collection($comments);
     }
-
 }

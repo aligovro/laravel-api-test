@@ -29,6 +29,7 @@ class PostController extends Controller
      * @OA\Post(
      *     path="/api/v1/posts",
      *     summary="Create a post",
+     *     security={{"bearerAuth":{}}},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(ref="#/components/schemas/StorePostRequest")
@@ -59,6 +60,7 @@ class PostController extends Controller
      * @OA\Put(
      *     path="/api/v1/posts/{id}",
      *     summary="Update a post",
+     *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\RequestBody(
      *         required=true,
@@ -77,6 +79,7 @@ class PostController extends Controller
      * @OA\Delete(
      *     path="/api/v1/posts/{id}",
      *     summary="Delete a post",
+     *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=204, description="Deleted")
      * )
