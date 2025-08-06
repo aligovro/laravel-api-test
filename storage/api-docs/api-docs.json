@@ -1,0 +1,347 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "ProFashion API",
+        "description": "Документация для REST API",
+        "contact": {
+            "email": "support@profashion.com"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Основной сервер"
+        }
+    ],
+    "paths": {
+        "/api/v1/comments": {
+            "get": {
+                "summary": "Get all comments",
+                "operationId": "dcec71792ceaafebacd7ec3a87b55191",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a comment",
+                "operationId": "f729fbd8b93a9f58d43ab4b77226b23d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreCommentRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/v1/comments/{id}": {
+            "get": {
+                "summary": "Get a comment",
+                "operationId": "d840a94dc212fda36dedcea03c86d424",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update a comment",
+                "operationId": "5321b3057f01a56cc8e7c62e5047a32e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateCommentRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete a comment",
+                "operationId": "18935c723149116e7339354edf38fef6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted"
+                    }
+                }
+            }
+        },
+        "/api/v1/posts": {
+            "get": {
+                "summary": "Get all posts",
+                "operationId": "92f08c82044f01535382e3f0785785b0",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a post",
+                "operationId": "c599878a9a0c89930a40d45748861909",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StorePostRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/v1/posts/{id}": {
+            "get": {
+                "summary": "Get a post",
+                "operationId": "0069cd5c0ca8e03cba742cbb20274f9f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update a post",
+                "operationId": "7e7660cc2799c1e930d42e942859f429",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdatePostRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete a post",
+                "operationId": "e48317841049b9e17c4f63d5b5206fce",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted"
+                    }
+                }
+            }
+        },
+        "/api/v1/posts/{id}/comments": {
+            "get": {
+                "summary": "Get comments of a post",
+                "operationId": "a5f38f05e2947257a7c3bb0bb9e1395d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/v1/users/{id}/posts": {
+            "get": {
+                "summary": "Get user's posts",
+                "operationId": "5b04e479b61c2c0401e5720fe894fd9b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/v1/users/{id}/comments": {
+            "get": {
+                "summary": "Get user's comments",
+                "operationId": "53b95bc0b5bef347a9e6c0e0f2ec9937",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "StoreCommentRequest": {
+                "required": [
+                    "user_id",
+                    "post_id",
+                    "body"
+                ],
+                "properties": {
+                    "user_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "post_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "body": {
+                        "type": "string",
+                        "example": "Комментарий"
+                    }
+                },
+                "type": "object"
+            },
+            "StorePostRequest": {
+                "required": [
+                    "user_id",
+                    "body"
+                ],
+                "properties": {
+                    "user_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "body": {
+                        "type": "string",
+                        "example": "Пост"
+                    }
+                },
+                "type": "object"
+            },
+            "UpdatePostRequest": {
+                "required": [
+                    "body"
+                ],
+                "properties": {
+                    "body": {
+                        "type": "string",
+                        "example": "Обновлённый пост"
+                    }
+                },
+                "type": "object"
+            },
+            "UpdateCommentRequest": {
+                "required": [
+                    "body"
+                ],
+                "properties": {
+                    "body": {
+                        "type": "string",
+                        "example": "Обновлённый комментарий"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
