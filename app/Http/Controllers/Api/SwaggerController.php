@@ -12,31 +12,38 @@ namespace App\Http\Controllers\Api;
  *     )
  * )
  *
- * @OA\Schema(
- * schema="StoreCommentRequest",
- * required={"user_id", "post_id", "body"},
- * @OA\Property(property="user_id", type="integer", example=1),
- * @OA\Property(property="post_id", type="integer", example=1),
- * @OA\Property(property="body", type="string", example="Комментарий")
+ * @OA\SecurityScheme(
+ *     securityScheme="bearerAuth",
+ *     type="http",
+ *     scheme="bearer",
+ *     bearerFormat="JWT"
  * )
  *
  * @OA\Schema(
- * schema="StorePostRequest",
- * required={"user_id", "body"},
- * @OA\Property(property="user_id", type="integer", example=1),
- * @OA\Property(property="body", type="string", example="Пост")
+ *     schema="StoreCommentRequest",
+ *     required={"user_id", "post_id", "body"},
+ *     @OA\Property(property="user_id", type="integer", example=1),
+ *     @OA\Property(property="post_id", type="integer", example=1),
+ *     @OA\Property(property="body", type="string", example="Комментарий")
  * )
  *
  * @OA\Schema(
- * schema="UpdatePostRequest",
- * required={"body"},
- * @OA\Property(property="body", type="string", example="Обновлённый пост")
+ *     schema="StorePostRequest",
+ *     required={"user_id", "body"},
+ *     @OA\Property(property="user_id", type="integer", example=1),
+ *     @OA\Property(property="body", type="string", example="Пост")
  * )
  *
  * @OA\Schema(
- * schema="UpdateCommentRequest",
- * required={"body"},
- * @OA\Property(property="body", type="string", example="Обновлённый комментарий")
+ *     schema="UpdatePostRequest",
+ *     required={"body"},
+ *     @OA\Property(property="body", type="string", example="Обновлённый пост")
+ * )
+ *
+ * @OA\Schema(
+ *     schema="UpdateCommentRequest",
+ *     required={"body"},
+ *     @OA\Property(property="body", type="string", example="Обновлённый комментарий")
  * )
  *
  * @OA\Server(

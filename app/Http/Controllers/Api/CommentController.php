@@ -27,6 +27,7 @@ class CommentController extends Controller
      * @OA\Post(
      *     path="/api/v1/comments",
      *     summary="Create a comment",
+     *     security={{"bearerAuth":{}}},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(ref="#/components/schemas/StoreCommentRequest")
@@ -57,6 +58,7 @@ class CommentController extends Controller
      * @OA\Put(
      *     path="/api/v1/comments/{id}",
      *     summary="Update a comment",
+     *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\RequestBody(
      *         required=true,
@@ -75,6 +77,7 @@ class CommentController extends Controller
      * @OA\Delete(
      *     path="/api/v1/comments/{id}",
      *     summary="Delete a comment",
+     *     security={{"bearerAuth":{}}},
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=204, description="Deleted")
      * )
